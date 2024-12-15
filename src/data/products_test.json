@@ -1,0 +1,63 @@
+{
+    "iphones": [
+      {
+        "image": "/images/iphone.jpeg",
+        "name": "iPhone 12",
+        "price": "799",
+        "description": "The latest iPhone with A14 Bionic chip.",
+        "isOnSale": true
+      },
+      {
+        "image": "/images/iphone.jpeg",
+        "name": "iPhone 11",
+        "price": "599",
+        "description": "Previous generation iPhone with A13 Bionic chip.",
+        "isOnSale": false
+      },
+      {
+        "image": "/images/iphone.jpeg",
+        "name": "iPhone 11",
+        "price": "599",
+        "description": "Previous generation iPhone with A13 Bionic chip.",
+        "isOnSale": false
+      },
+      {
+        "image": "/images/iphone.jpeg",
+        "name": "iPhone 11",
+        "price": "599",
+        "description": "Previous generation iPhone with A13 Bionic chip.",
+        "isOnSale": false
+      }
+    ],
+    "ipads": [
+      {
+        "image": "/images/ipad.jpg",
+        "name": "iPad Pro",
+        "price": "999",
+        "description": "The ultimate iPad with M1 chip.",
+        "isOnSale": true
+      },
+      {
+        "image": "/images/ipad.jpg",
+        "name": "iPad Air",
+        "price": "699",
+        "description": "Powerful and colorful iPad Air.",
+        "isOnSale": false
+      },
+      {
+        "image": "/images/ipad.jpg",
+        "name": "iPad Air",
+        "price": "699",
+        "description": "Powerful and colorful iPad Air.",
+        "isOnSale": false
+      },
+      {
+        "image": "/images/ipad_air.jpg",
+        "name": "iPad 9",
+        "price": "699",
+        "description": "Powerful and colorful iPad Air.",
+        "isOnSale": false
+      }
+    ]
+  }
+  

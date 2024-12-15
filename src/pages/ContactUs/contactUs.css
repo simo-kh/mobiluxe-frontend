@@ -1,0 +1,41 @@
+.contact-us-container {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    max-width: 800px;
+  }
+  
+  .contact-us-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+    border-bottom: 2px solid red;
+    padding-bottom: 10px;
+  }
+  
+  .contact-us-details {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+  }
+  
+  .contact-us-item h3 {
+    font-size: 18px;
+    font-weight: bold;
+    color: #007bff;
+    margin-bottom: 5px;
+  }
+  
+  .contact-us-item p {
+    font-size: 16px;
+    color: #333;
+  }
+  
+  .contact-us-map {
+    margin-top: 20px;
+  }
+  

@@ -1,0 +1,42 @@
+.about-us-container {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    max-width: 800px;
+  }
+  
+  .about-us-title {
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #4caf50; /* Green color to match the theme */
+    padding-bottom: 10px;
+  }
+  
+  .about-us-content {
+    font-size: 16px;
+    color: #333;
+    line-height: 1.6;
+  }
+  
+  .about-us-subtitle {
+    font-size: 24px;
+    font-weight: bold;
+    color: #007bff;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .about-us-list {
+    list-style-type: disc;
+    margin-left: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .about-us-list li {
+    margin-bottom: 10px;
+  }
+  

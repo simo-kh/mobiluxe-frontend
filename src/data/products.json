@@ -1,0 +1,103 @@
+{
+    "iphones": [
+      {
+        "image": "/images/iphone.jpeg",
+        "name": "iPhone 13",
+        "price": "999",
+        "description": "The latest iPhone with advanced features."
+      },
+      {
+        "image": "/images/iphone.jpeg",
+        "name": "iPhone 12",
+        "price": "799",
+        "description": "A powerful phone with a sleek design."
+      },
+      {
+        "image": "/images/iphone.jpeg",
+        "name": "iPhone 13",
+        "price": "999",
+        "description": "The latest iPhone with advanced features."
+      },
+      {
+        "image": "/images/iphone.jpeg",
+        "name": "iPhone 12",
+        "price": "799",
+        "description": "A powerful phone with a sleek design."
+      },
+      {
+        "image": "/images/iphone.jpeg",
+        "name": "iPhone 13",
+        "price": "999",
+        "description": "The latest iPhone with advanced features."
+      },
+      {
+        "image": "/images/iphone.jpeg",
+        "name": "iPhone 12",
+        "price": "799",
+        "description": "A powerful phone with a sleek design."
+      },
+      {
+        "image": "/images/iphone.jpeg",
+        "name": "iPhone 13",
+        "price": "999",
+        "description": "The latest iPhone with advanced features."
+      },
+      {
+        "image": "/images/iphone.jpeg",
+        "name": "iPhone 12",
+        "price": "799",
+        "description": "A powerful phone with a sleek design."
+      },
+      {
+        "image": "/images/iphone.jpeg",
+        "name": "iPhone 13",
+        "price": "999",
+        "description": "The latest iPhone with advanced features."
+      },
+      {
+        "image": "/images/iphone.jpeg",
+        "name": "iPhone 12",
+        "price": "799",
+        "description": "A powerful phone with a sleek design."
+      }
+    ],
+    "samsungs": [
+      {
+        "image": "/images/samsung.png",
+        "name": "Samsung Galaxy S21",
+        "price": "899",
+        "description": "High performance and stunning display."
+      },
+      {
+        "image": "/images/samsung.png",
+        "name": "Samsung Galaxy S20",
+        "price": "699",
+        "description": "Excellent value with premium features."
+      },
+      {
+        "image": "/images/samsung.png",
+        "name": "Samsung Galaxy S23",
+        "price": "1000",
+        "description": "Excellent value with premium features."
+      },
+      {
+        "image": "/images/samsung.png",
+        "name": "Samsung Galaxy S21",
+        "price": "899",
+        "description": "High performance and stunning display."
+      },
+      {
+        "image": "/images/samsung.png",
+        "name": "Samsung Galaxy S20",
+        "price": "699",
+        "description": "Excellent value with premium features."
+      },
+      {
+        "image": "/images/samsung.png",
+        "name": "Samsung Galaxy S23",
+        "price": "1000",
+        "description": "Excellent value with premium features."
+      }
+    ]
+  }
+  

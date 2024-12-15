@@ -1,0 +1,128 @@
+body {
+  margin: 0;
+  font-family: sans-serif;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #f2f2f2;
+  border-top: 1px solid #333333;
+  position: relative;
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333333;
+}
+
+.logo img {
+  width: 70px;
+  border-radius: 10em;
+}
+
+.navigation-menu {
+  display: flex;
+}
+
+.navigation-menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 20px;
+}
+
+.navigation-menu li {
+  position: relative;
+}
+
+.navigation-menu a {
+  text-decoration: none;
+  color: #333333;
+  font-weight: normal;
+  padding: 5px;
+  position: relative;
+}
+
+.navigation-menu a::after {
+  content: '';
+  display: block;
+  height: 2px;
+  width: 0;
+  background: transparent;
+  transition: width 0.3s, background-color 0.3s;
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.navigation-menu a:hover::after {
+  width: 50%;
+  background: #FFA500;
+}
+
+.navigation-menu a.selected::after {
+  width: 50%;
+  background: #FFA500;
+}
+
+.hamburger {
+  display: none;
+  cursor: pointer;
+  font-size: 24px;
+  z-index: 1002;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .navigation-menu {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #fff;
+    width: 100%;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1001;
+  }
+
+  .navigation-menu.active {
+    display: flex;
+  }
+
+  .navigation-menu ul {
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+  }
+
+  .navigation-menu li {
+    width: 100%;
+    text-align: center;
+  }
+
+  .navigation-menu a {
+    padding: 15px 20px;
+    width: 100%;
+    display: block;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .hamburger.active {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+  }
+}

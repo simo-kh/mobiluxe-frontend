@@ -1,0 +1,145 @@
+/* Card Container */
+.card {
+  background-color: #ffffff;
+  border-radius: 15px;
+  overflow: hidden;
+  width: 100%;
+  max-width: 220px;
+  height: 370px; /* Adjusted height */
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out, box-shadow 0.3s ease;
+  margin: 10px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.card.card-animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card:hover {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Upper Section */
+.card-upper {
+  background-color: #ebecf1;
+  height: 200px; /* Adjusted height for upper section */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-image {
+  width: auto;
+  height: 80%;
+  object-fit: contain;
+}
+
+/* Sale Badge */
+.card-sale-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #ff4757;
+  color: #ffffff;
+  padding: 5px 10px;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+/* Lower Section */
+.card-lower {
+  background-color: #ffffff;
+  padding: 15px;
+  text-align: center;
+}
+
+.card-title {
+  font-size: 18px;
+  margin: 10px 0;
+  color: #333;
+  font-weight: bold;
+}
+
+/* Condition Text */
+.card-condition {
+  font-size: 14px;
+  margin: 5px 0;
+  font-weight: bold;
+}
+
+.card-condition.card-new {
+  color: #28a745;
+}
+
+.card-condition.card-used {
+  color: #ff4757;
+}
+
+/* Price Container */
+.card-price-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.card-price {
+  color: #ff9900;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.card-original-price {
+  color: #a0a0a0;
+  text-decoration: line-through;
+  font-size: 15px;
+}
+
+.card-more-button {
+  background-color: #FFE5B4;
+  color: #333;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.card-more-button:hover {
+  background-color: #ffd27f;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .product-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .product-cards {
+    grid-template-columns: repeat(1, 1fr); /* Ensure minimum 1 product in a row */
+  }
+  .card {
+    max-width: 150px;
+    height: 410px;
+  }
+  .card-title {
+    font-size: 15px;
+  }
+  .card-price-container{
+    display: grid;
+    justify-content: center;
+  }
+  .card-price, .card-original-price{
+    font-size: 12px;
+    margin: 5px 0;
+  }
+}

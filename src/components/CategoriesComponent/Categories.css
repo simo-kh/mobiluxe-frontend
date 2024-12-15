@@ -1,0 +1,82 @@
+.categories-container {
+  width: 250px;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  margin-right: 20px;
+  top: 70px; /* Adjust based on your header height */
+  bottom: 0;
+  left: 0;
+  overflow-y: auto;
+}
+
+.categories-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+  border-bottom: 2px solid red;
+  padding-bottom: 10px;
+}
+
+.categories-list, .subcategories-list {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 15px;
+}
+
+.category-item {
+  font-size: 1rem;
+  color: #000;
+  padding: 5px 0;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  font-family: Arial, sans-serif;
+}
+
+.category-item:hover {
+  color: #007bff;
+}
+
+.category-item.selected {
+  color: #007bff; /* Same color as hover */
+}
+
+.category-header {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.arrow {
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.arrow.right::before {
+  content: '▶';
+}
+
+.arrow.down::before {
+  content: '▼';
+}
+
+.subcategories-list {
+  padding-left: 20px;
+}
+
+.subcategory-item {
+  cursor: pointer;
+  padding: 5px 0;
+  transition: color 0.3s ease;
+}
+
+.subcategory-item:hover, .subcategory-item.selected {
+  color: #007bff;
+}
+
+.loading {
+  font-style: italic;
+}

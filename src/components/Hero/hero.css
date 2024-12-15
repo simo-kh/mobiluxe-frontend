@@ -1,0 +1,119 @@
+.section-container {
+  display: flex;
+  justify-content: flex-start; /* Align items to the start (left) */
+  align-items: center;
+  padding: 50px;
+  background-size: cover; /* Ensure the background image covers the entire section */
+  background-position: center; /* Center the background image */
+  position: relative;
+  height: 600px;
+  animation: fadeIn 2s ease-in-out;
+  transition: background-image 1s ease-in-out;
+  background-repeat: no-repeat; /* Ensure the background image doesn't repeat */
+}
+
+.text-block {
+  color: #FFFFFF;
+  max-width: 50%;
+  animation: slideInLeft 2s ease-in-out;
+  z-index: 1; /* Ensure text is above the background image */
+}
+
+.subtitle {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0 0 40px 0;
+  color: #FFD700; /* Dark yellow color */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+
+}
+
+.main-headline {
+  font-size: 48px;
+  font-weight: bold;
+  margin: 0 0 40px 0;
+  color: #000000; /* Black color */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+}
+
+
+.tagline {
+  font-size: 16px;
+  font-weight: 400;
+  margin: 0 0 20px 0;
+}
+
+.cta-button {
+  background-color: #FFD700; /* Dark yellow color */
+  color: #000000;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  transition: background-color 0.3s ease;
+  border-radius: 10px; /* Added border radius */
+}
+
+.cta-button:hover {
+  background-color: #FFC107; /* Slightly darker yellow on hover */
+}
+
+.hero-image img {
+  max-width: 100%;
+  height: auto;
+  transform: rotate(-10deg);
+  animation: slideInRight 2s ease-in-out;
+}
+
+.button-container {
+  margin-top: 20px; /* Added space between text and button */
+}
+
+@media (max-width: 768px) {
+  .section-container {
+      flex-direction: column;
+      text-align: center;
+  }
+
+  .text-block {
+      max-width: 100%;
+  }
+
+  .hero-image {
+      margin-top: 20px;
+  }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+  }
+  to {
+      opacity: 1;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+      transform: translateX(-100%);
+      opacity: 0;
+  }
+  to {
+      transform: translateX(0);
+      opacity: 1;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+      transform: translateX(100%);
+      opacity: 0;
+  }
+  to {
+      transform: translateX(0);
+      opacity: 1;
+  }
+}

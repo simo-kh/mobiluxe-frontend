@@ -1,0 +1,136 @@
+.products-container {
+  flex: 1;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.products-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 10px;
+}
+
+.products-count {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.products-sort {
+  display: flex;
+  align-items: center;
+}
+
+.products-sort label {
+  margin-right: 10px;
+}
+
+.products-sort select {
+  padding: 5px;
+  font-size: 16px;
+}
+
+.products-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.product-card {
+  background-color: #f0f0f0;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  flex: 1 1 calc(50% - 20px); /* Flex-grow, flex-shrink, and flex-basis for two columns */
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  margin: 10px;
+}
+
+.product-card.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.product-card img {
+  width: 100%;
+  height: auto;
+}
+
+.product-info {
+  padding: 10px;
+  text-align: center;
+}
+
+.product-title {
+  font-size: 1.2rem;
+  margin: 10px 0;
+  color: #333;
+}
+
+
+.product-description {
+  display: none;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 10px;
+  box-sizing: border-box;
+  transition: opacity 0.3s ease;
+  opacity: 0;
+}
+
+.product-card:hover .product-description {
+  display: block;
+  opacity: 1;
+}
+
+.product-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.sale-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #FF4D4D;
+  color: #FFFFFF;
+  padding: 5px 10px;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 3px;
+}
+
+
+@media (max-width: 768px) {
+  .products-grid {
+    gap: 10px; /* Adjust gap for smaller screens */
+  }
+
+  .product-card {
+    flex: 1 1 calc(50% - 10px); /* Adjust flex-basis for two columns */
+  }
+}
+
+@media (max-width: 500px) {
+  .products-grid {
+    gap: 10px; /* Adjust gap for smaller screens */
+  }
+
+  .product-card {
+    flex: 1 1 calc(50% - 10px); /* Adjust flex-basis for two columns */
+    max-width: 120px;
+  }
+}

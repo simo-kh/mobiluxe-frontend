@@ -1,0 +1,47 @@
+.filter-container {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+  
+  .filter-group {
+    margin-bottom: 15px;
+  }
+  
+  .filter-group h4 {
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #333;
+  }
+  
+  .filter-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .filter-option {
+    display: flex;
+    align-items: center;
+  }
+  
+  .filter-option input[type="checkbox"] {
+    margin-right: 5px;
+  }
+  
+  .apply-filters-button {
+    background-color: #c0a060;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .apply-filters-button:hover {
+    background-color: #a89050;
+  }
+  

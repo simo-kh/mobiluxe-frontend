@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Header</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <style>
+        /* General Styles */
+body {
+    margin: 0;
+    font-family: sans-serif;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #FFFFFF;
+    border-top: 1px solid #333333;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333333;
+}
+
+.logo-accent {
+    text-decoration: underline;
+    color: red;
+}
+
+.navigation-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 20px;
+}
+
+.navigation-menu li {
+    position: relative;
+}
+
+.navigation-menu a {
+    text-decoration: none;
+    color: #333333;
+    font-weight: normal;
+    padding: 5px;
+}
+
+.navigation-menu a:hover {
+    color: #000000;
+    text-decoration: underline;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #FFFFFF;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+    list-style: none;
+    margin: 0;
+    padding: 10px 0;
+}
+
+.dropdown-menu li {
+    padding: 5px 20px;
+}
+
+.dropdown-menu a {
+    color: #333333;
+    white-space: nowrap;
+}
+
+.dropdown-menu a:hover {
+    background-color: #f0f0f0;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .navigation-menu ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+}
+
+/* Section Styles */
+.section-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px;
+    background: linear-gradient(to right, blue, purple, pink, green);
+    position: relative;
+    height: 500px;
+}
+
+.text-block {
+    color: #FFFFFF;
+    max-width: 50%;
+}
+
+.subtitle {
+    font-size: 14px;
+    font-weight: 500;
+    margin: 0 0 10px 0;
+}
+
+.main-headline {
+    font-size: 36px;
+    font-weight: bold;
+    margin: 0 0 10px 0;
+}
+
+.tagline {
+    font-size: 16px;
+    font-weight: 400;
+    margin: 0 0 20px 0;
+}
+
+.cta-button {
+    background-color: #FFFFFF;
+    color: #000000;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+    transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #f0f0f0;
+}
+
+.drone-image img {
+    max-width: 100%;
+    height: auto;
+    transform: rotate(-10deg);
+}
+
+@media (max-width: 768px) {
+    .section-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .text-block {
+        max-width: 100%;
+    }
+
+    .drone-image {
+        margin-top: 20px;
+    }
+}
+
+/* Top Products Section Styles */
+.top-products-section {
+    background-color: #FFFFFF;
+    width: 88%;
+    margin: 0 auto;
+    padding: 50px 60px;
+    margin-top: -50px; /* For overlapping effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 10;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.section-title {
+    font-size: 28px;
+    font-weight: bold;
+    color: #333333;
+}
+
+.category-tabs {
+    display: flex;
+    gap: 20px;
+}
+
+.tab {
+    font-size: 16px;
+    font-weight: normal;
+    color: #333333;
+    cursor: pointer;
+    padding: 5px 10px;
+}
+
+.tab.active {
+    color: #FF4D4D;
+    background-color: #FFCCCC;
+    border-radius: 4px;
+}
+
+.product-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.product-card {
+    background-color: #FFFFFF;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.sale-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #FF4D4D;
+    color: #FFFFFF;
+    padding: 5px 10px;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 3px;
+}
+
+.product-image {
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.product-title {
+    font-size: 16px;
+    font-weight: 500;
+    color: #333333;
+    margin-bottom: 10px;
+}
+
+.ratings {
+    color: #FFD700;
+    margin-bottom: 10px;
+}
+
+.price {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.original-price {
+    font-size: 14px;
+    color: #999999;
+    text-decoration: line-through;
+}
+
+.sale-price {
+    font-size: 16px;
+    font-weight: bold;
+    color: #FF4D4D;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .product-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .tab {
+        font-size: 14px;
+        padding: 3px 7px;
+    }
+}
+
+@media (max-width: 480px) {
+    .product-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .tab {
+        margin-bottom: 10px;
+    }
+}
+/* Shop by Categories Section Styles */
+.shop-by-categories-section {
+    background: url('https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA1L3B4MTM2NjcxMC1pbWFnZS1rd3Z4eGVxcC5qcGc.jpg') no-repeat center center/cover;
+    padding: 50px 60px;
+    margin-top: -50px; /* For overlapping effect */
+    position: relative;
+    z-index: 9;
+    max-width: 100%; /* Prevent overflow */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.shop-by-categories-section .section-header {
+    height: 200px;
+    justify-content: center;
+}
+
+.shop-by-categories-section .section-title {
+    font-size: 28px;
+    font-weight: bold;
+    color: #FFFFFF;
+}
+
+.sub-header-decoration {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    margin-top: 10px;
+}
+
+.red-line {
+    width: 2px;
+    height: 20px;
+    background-color: #FF4D4D;
+}
+
+.category-cards {
+    margin: 0 30px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    text-align: center;
+}
+
+.category-card {
+    background-color: #FFFFFF;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.category-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.category-image {
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.category-title {
+    font-size: 16px;
+    font-weight: 500;
+    color: #333333;
+}
+
+.navigation-arrows {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    width: 95%; /* Adjust width to fit within section */
+    top: 60%;
+    transform: translateY(-50%);
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.nav-arrow {
+    cursor: pointer;
+    font-size: 24px;
+    color: rgba(255, 255, 255, 0.7);
+    background: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    border-radius: 50%;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.nav-arrow:hover {
+    background: rgba(0, 0, 0, 0.8);
+    color: rgba(255, 255, 255, 1);
+}
+
+.dots-navigation {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    margin: 0 5px;
+    transition: background 0.3s ease;
+}
+
+.dot.active,
+.dot:hover {
+    background: rgba(255, 255, 255, 1);
+}
+
+.left-arrow {
+    margin-left: -50px;
+}
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .category-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .nav-arrow {
+        font-size: 20px;
+        padding: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .category-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .nav-arrow {
+        display: none;
+    }
+}
+/* Footer Styles */
+.footer {
+  background-color: #ffffff;
+  color: #000000;
+  display: flex;
+  justify-content: space-around;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.footer-column {
+  flex: 1;
+  padding: 20px;
+}
+
+.footer-logo img {
+  max-width: 150px;
+  margin: 0 auto;
+}
+
+.footer-contact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.footer-contact div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer-contact i {
+  font-size: 20px;
+  color: #FFD700;
+}
+
+.footer-contact span {
+  color: #1f2a34;
+  font-weight: bold;
+}
+
+.footer-social {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.footer-social a {
+  display: inline-block;
+  transition: transform 0.3s, color 0.3s;
+}
+
+.footer-social i {
+  font-size: 24px;
+  color: #FFD700;
+}
+
+.footer-social a:hover {
+  transform: scale(1.1);
+  color: #FFD700;
+}
+
+
+    </style>
+        
+    <!-- Include Font Awesome CDN -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    
+    <header class="header-container">
+        <div class="logo"><img src="C:\Users\abder\OneDrive\Desktop\mobiluxe\mobiluxe-frontend\public\images\logo.jpg" style="width: 70px; border-radius: 10em;" alt=""></div>
+        <nav class="navigation-menu">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li class="dropdown">
+                    <a href="#shop">Shop</a>
+                </li>
+                <li><a href="#about-us">About Us</a></li>
+                <li><a href="#contact-us">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="section-container">
+        <div class="text-block">
+            <p class="subtitle">Discover New</p>
+            <h1 class="main-headline">Aerobat Fore-Axis Mini Drone</h1>
+            <p class="tagline">The Brand Comes From The Google Home Collection 2021</p>
+            <button class="cta-button">Shop Now</button>
+        </div>
+        <div class="drone-image">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSja-jO5miBiKPqHqebq0b5eakZJu786GXofA&s" alt="Drone Image">
+        </div>
+    </div>
+    
+    <div class="top-products-section">
+        <div class="section-header">
+            <h2 class="section-title">TOP PRODUCTS</h2>
+        </div>
+        <div class="product-cards">
+            <!-- Example Product Card -->
+            
+            <div class="product-card">
+                <div class="sale-badge">SALE!</div>
+                <img src="https://hips.hearstapps.com/hmg-prod/images/iphone-15-pro-max-review-esquire-65095f09647c8.jpg?crop=0.5xw:1xh;center,top&resize=200:*" alt="Product Image" class="product-image">
+                <h3 class="product-title">Product Title</h3>
+                <div class="price">
+                    <span class="price">$99.99</span>
+                </div>
+            </div>
+            <!-- Repeat product-card divs as needed -->
+        </div>
+    </div>
+
+    <div class="shop-by-categories-section">
+        <div class="section-header">
+            <h2 class="section-title">SHOP BY CATEGORIES</h2>
+        </div>
+        <div class="category-cards">
+            <!-- Example Category Card -->
+            <div class="category-card">
+                <img src="https://istyle.ma/media/catalog/product/cache/image/700x700/e9c3970ab036de70892d86c6d221abfe/i/p/ipad_10.9_inch_wi-fi_pink_pdp_image_position-1b_en_5.jpg" alt="Category Image" class="category-image">
+                <h3 class="category-title">SMARTPHONE & IPAD</h3>
+            </div>
+            <div class="category-card">
+                <img src="https://istyle.ma/media/catalog/product/cache/image/700x700/e9c3970ab036de70892d86c6d221abfe/i/p/ipad_10.9_inch_wi-fi_pink_pdp_image_position-1b_en_5.jpg" alt="Category Image" class="category-image">
+                <h3 class="category-title">SMARTPHONE & IPAD</h3>
+            </div>
+            <div class="category-card">
+                <img src="https://istyle.ma/media/catalog/product/cache/image/700x700/e9c3970ab036de70892d86c6d221abfe/i/p/ipad_10.9_inch_wi-fi_pink_pdp_image_position-1b_en_5.jpg" alt="Category Image" class="category-image">
+                <h3 class="category-title">SMARTPHONE & IPAD</h3>
+            </div>
+            <div class="category-card">
+                <img src="https://istyle.ma/media/catalog/product/cache/image/700x700/e9c3970ab036de70892d86c6d221abfe/i/p/ipad_10.9_inch_wi-fi_pink_pdp_image_position-1b_en_5.jpg" alt="Category Image" class="category-image">
+                <h3 class="category-title">SMARTPHONE & IPAD</h3>
+            </div>
+            <!-- Repeat category-card divs as needed -->
+        </div>
+        <div class="navigation-arrows">
+            <div class="nav-arrow left-arrow">&#9664;</div>
+            <div class="nav-arrow right-arrow">&#9654;</div>
+        </div>
+        <div class="dots-navigation">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <!-- Repeat dots as needed -->
+        </div>
+    
+    </div>
+    
+    <footer class="footer">
+        <div class="footer-column footer-logo">
+            <div class="logo"><img src="C:\Users\abder\OneDrive\Desktop\mobiluxe\mobiluxe-frontend\public\images\logo.jpg" style="width: 70px; border-radius: 10em;" alt=""></div>
+        </div>
+        <div class="footer-column footer-contact">
+          <div>
+            <i class="fas fa-envelope"></i>
+            <span>contact@example.com</span>
+          </div>
+          <div>
+            <i class="fas fa-map-marker-alt"></i>
+            <span>123 Main St, City, Country</span>
+          </div>
+          <div>
+            <i class="fas fa-phone"></i>
+            <span>+123 456 7890</span>
+          </div>
+        </div>
+        <div class="footer-column footer-social">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-tiktok"></i></a>
+        </div>
+      </footer>
+
+    
+</body>
+</html>

@@ -1,0 +1,40 @@
+/* Base style for the category card */
+.category-card {
+    background-color: #FFFFFF;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.5s ease-out;
+    width: 200px; /* Fixed width */
+    height: 300px; /* Fixed height */
+    opacity: 0;
+    transform: translateY(50px);
+    cursor: pointer;
+    border: 1px solid transparent; /* Added for border transition */
+}
+
+/* Apply animation on component mount */
+.category-card.animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Hover effect to increase size and change shadow */
+.category-card:hover {
+    transform: scale(1.05); /* Slightly increase the size */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Darker and larger shadow */
+    border: 1px solid #ccc; /* Border on hover */
+}
+
+/* Style for the category image inside the card */
+.category-image {
+    width: 100%;
+    height: auto;
+}
+
+/* Style for the category title inside the card */
+.category-title {
+    font-size: 14px;
+    font-weight: bold;
+    color: #333333;
+    text-align: center;
+}
