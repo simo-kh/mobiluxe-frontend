@@ -3,10 +3,12 @@ import { useNavigate } from 'react-router-dom';
 import './hero.css';
 
 const images = [
-  // "https://demo-61.woovinapro.com/wp-content/uploads/2022/04/slider1.jpg",
-  // "https://demo-61.woovinapro.com/wp-content/uploads/2022/04/slider2.jpg"
-  "https://amanto-store-demo.myshopify.com/cdn/shop/files/section-slideshow-v2.jpg?v=1614297690",
-  "https://amanto-store-demo.myshopify.com/cdn/shop/files/section-slideshow-v2-img3.jpg?v=1614297689"
+  // "images/walpaper.jpg",
+  // "images/walpaper2.jpg",
+  // "images/walpaper3.jpg",
+  "images/simo_mobiluxe.jpg"
+
+  //"https://amanto-store-demo.myshopify.com/cdn/shop/files/section-slideshow-v2-img3.jpg?v=1614297689"
 ];
 
 

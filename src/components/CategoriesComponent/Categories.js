@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Categories.css';
-import { getSubcategories, getAttributes, getFilteredProducts } from '../../components/Api/api';
+import { getSubcategories, getFilteredProducts } from '../../components/Api/api';
 import Filter from '../Filter/Filter';
 
 const Categories = ({ categories, onCategoryClick, onSubcategoryClick, onProductsUpdate }) => {
@@ -9,59 +9,82 @@ const Categories = ({ categories, onCategoryClick, onSubcategoryClick, onProduct
   const [selectedSubcategory, setSelectedSubcategory] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [filters, setFilters] = useState({});
-  const [priceRange, setPriceRange] = useState([0, 5000]);
+  const [priceRange, setPriceRange] = useState([0, 20000]);
 
+  // Fetch subcategories when a category is expanded
   useEffect(() => {
     if (expandedCategory) {
       fetchSubcategories(expandedCategory);
     }
   }, [expandedCategory]);
 
+  // Fetch products when selectedCategory changes
+  useEffect(() => {
+    if (selectedCategory && !selectedSubcategory) {
+      // Fetch all products for the selected category
+      fetchProductsForCategory(selectedCategory);
+    }
+  }, [selectedCategory, filters, priceRange]);
+
+  // Fetch products when selectedSubcategory changes
   useEffect(() => {
     if (selectedSubcategory) {
-      applyFilters(selectedSubcategory);
+      // Fetch all products for the selected subcategory
+      fetchProductsForSubcategory(selectedSubcategory);
     }
-  }, [filters, priceRange, selectedSubcategory]);
+  }, [selectedSubcategory, filters, priceRange]);
 
+  // Fetch subcategories for a category
   const fetchSubcategories = async (categoryId) => {
     try {
       const response = await getSubcategories(categoryId);
       setSubcategories((prevSubcategories) => ({
         ...prevSubcategories,
-        [categoryId]: response.data.filter(subcategory => subcategory.category_id === categoryId)
+        [categoryId]: response.data.filter(subcategory => subcategory.category_id === categoryId),
       }));
     } catch (error) {
       console.error('Error fetching subcategories:', error);
     }
   };
 
-  const handleCategoryClick = (category) => {
-    if (expandedCategory === category.id) {
-      setExpandedCategory(null);
-    } else {
-      setExpandedCategory(category.id);
-      setSelectedCategory(category.id);
-      onCategoryClick(category);
-    }
-  };
-
-  const handleSubcategoryClick = (subcategory) => {
-    setSelectedSubcategory(subcategory.id);
-    onSubcategoryClick(subcategory);
-  };
-
-  const handleFilterChange = (newFilters, newPriceRange) => {
-    setFilters(newFilters);
-    setPriceRange(newPriceRange);
-  };
-
-  const applyFilters = async (subcategoryId) => {
+  // Fetch products for a category
+  const fetchProductsForCategory = async (categoryId) => {
     try {
-      const response = await getFilteredProducts(subcategoryId, filters, priceRange);
-      onProductsUpdate(response.data); // Update products in the parent component
+      const response = await getFilteredProducts(categoryId, filters, priceRange, false); // false = category
+      onProductsUpdate(response.data); // Notify parent with updated products
     } catch (error) {
-      console.error('Error fetching filtered products:', error);
+      console.error('Error fetching products for category:', error);
     }
+  };
+
+  // Fetch products for a subcategory
+  const fetchProductsForSubcategory = async (subcategoryId) => {
+    try {
+      const response = await getFilteredProducts(subcategoryId, filters, priceRange, true); // true = subcategory
+      onProductsUpdate(response.data); // Notify parent with updated products
+    } catch (error) {
+      console.error('Error fetching products for subcategory:', error);
+    }
+  };
+
+  // Handle category click
+  const handleCategoryClick = (category) => {
+    setSelectedCategory(category.id);
+    setSelectedSubcategory(null); // Reset subcategory when a new category is selected
+    setExpandedCategory(category.id === expandedCategory ? null : category.id); // Toggle expanded state
+    onCategoryClick(category); // Notify parent about the category click
+  };
+
+  // Handle subcategory click
+  const handleSubcategoryClick = (subcategory) => {
+    setSelectedSubcategory(subcategory.id); // Set selected subcategory
+    onSubcategoryClick(subcategory); // Notify parent about the subcategory click
+  };
+
+  // Handle filter changes
+  const handleFilterChange = (newFilters, newPriceRange) => {
+    setFilters(newFilters); // Update filters
+    setPriceRange(newPriceRange); // Update price range
   };
 
   return (
@@ -91,7 +114,11 @@ const Categories = ({ categories, onCategoryClick, onSubcategoryClick, onProduct
         ))}
       </ul>
       {selectedSubcategory && (
-        <Filter categoryId={selectedCategory} subcategoryId={selectedSubcategory} onFilterChange={handleFilterChange} />
+        <Filter
+          categoryId={selectedCategory}
+          subcategoryId={selectedSubcategory}
+          onFilterChange={handleFilterChange}
+        />
       )}
     </div>
   );

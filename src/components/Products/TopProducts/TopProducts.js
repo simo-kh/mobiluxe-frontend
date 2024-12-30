@@ -7,13 +7,13 @@ import { getProducts } from '../../Api/api';
 import './topProducts.css';
 
 function TopProducts() {
-  const [activeCategory, setActiveCategory] = useState('iphones');
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [products, setProducts] = useState([]);
   const topProductsRef = useRef(null);
 
   const handleProductClick = (product) => {
     setSelectedProduct(product);
+    
   };
 
   const handleCloseModal = () => {
@@ -72,6 +72,8 @@ function TopProducts() {
             isOnSale={product.is_promotion}
             isUsed={product.is_used}
             originalPrice={product.original_price}
+            extraAttributes={product.extra_attributes} // Pass `extra_attributes` to `ProductItem`
+            condition={product.condition}
             onClick={() => handleProductClick(product)}
           />
         ))}

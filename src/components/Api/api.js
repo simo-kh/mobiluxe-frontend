@@ -4,7 +4,7 @@ const getApiUrl = () => {
   if (window.location.hostname === 'localhost') {
     return 'http://localhost:5000';
   } else {
-    return `http://${window.location.hostname}:5000`;
+    return `http://192.168.52.200:5000`;
   }
 };
 
@@ -26,6 +26,21 @@ export const getCategories = async () => {
   return await axios.get(`${API_URL}/categories`);
 };
 
+// export const getCategories = async () => {
+//   // Simulate an API call with a short delay
+//   return new Promise((resolve) => {
+//     const randomCategories = [];
+//     for (let i = 0; i < 3; i++) {
+//       randomCategories.push({
+//         id: i + 1,
+//         name: `Category ${i + 1}`,
+//         image: `https://via.placeholder.com/150?text=Category+${i + 1}`, // Placeholder image
+//       });
+//     }
+//     setTimeout(() => resolve({ data: randomCategories }), 500); // Simulate network delay
+//   });
+// };
+
 export const getSubcategories = async (categoryId) => {
   return axios.get(`${API_URL}/subcategories?category_id=${categoryId}`);
 };
@@ -40,13 +55,25 @@ export const getAttributes = async (categoryId, subcategoryId) => {
 };
 
 
-export const getFilteredProducts = async (subcategoryId, filters, priceRange) => {
-  return axios.get(`${API_URL}/products`, {
-    params: {
-      subcategory_id: subcategoryId,
-      filters: JSON.stringify(filters),
-      price_min: priceRange[0],
-      price_max: priceRange[1]
-    }
-  });
+export const getFilteredProducts = async (id, filters, priceRange, isSubcategory = false) => {
+  const params = {
+    filters: JSON.stringify(filters), // Serialize filters
+    price_min: priceRange[0], // Minimum price
+    price_max: priceRange[1], // Maximum price
+  };
+
+  // Determine if the request is for a category or a subcategory
+  if (isSubcategory) {
+    params.subcategory_id = id; // Use subcategory ID
+  } else {
+    params.category_id = id; // Use category ID
+  }
+
+  try {
+    const response = await axios.get(`${API_URL}/products`, { params });
+    return response; // Return API response
+  } catch (error) {
+    console.error('Error fetching filtered products:', error);
+    throw error; // Re-throw error to be handled by the caller
+  }
 };

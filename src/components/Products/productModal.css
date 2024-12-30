@@ -39,14 +39,12 @@
 /* Gallery Container */
 .gallery-container {
   position: relative;
-  background-color: #ebecf1;
   border-radius: 15px;
   padding: 10px;
   margin-bottom: 20px;
 }
 
 .gallery-image {
-  width: 100%;
   max-height: 300px;
   object-fit: contain;
   border-radius: 15px;
@@ -91,30 +89,39 @@ h2 {
 }
 
 .condition.used {
-  color: #ff4757;
+  color: #000df2;
 }
 
 .price-section {
   display: flex;
-  justify-content: center;
-  align-items: baseline;
-  gap: 20px;
+    text-align: left;
+    font-size: 18px;
+    font-family: "roboto", Arial, Helvetica, sans-serif;
+    margin: 0;
+    color: #000000;
+    gap: 10px;
+}
+.product-attributes span {
+  margin: 4px;
 }
 
 .sale-price {
-  color: #ff9900;
+  color: #000000;
   font-size: 20px;
   font-weight: bold;
+  margin: 10px 0;
 }
 
 .original-price {
   color: #a0a0a0;
   text-decoration: line-through;
   font-size: 20px;
+  margin: 10px 0;
+
 }
 
 .regular-price {
-  color: #c0a060;
+  color: #000000;
   font-size: 20px;
   font-weight: bold;
 }
@@ -129,21 +136,23 @@ h2 {
 #product-description {
   background-color: #f9f9f9;
   margin: 10px 0;
-  padding: 10px;
+  padding: 1px 10px;
   border-radius: 10px;
   text-align: left;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-#product-description h5 {
-  color: #9f7e54;
+.product-h5 {
     font-size: 16px;
+    text-decoration: underline;
+    margin: 10px 0;
+    text-align: left;
 }
 
 /* Characteristics Table */
 .characteristics-table {
   width: 100%;
-  margin-top: 20px;
+  margin-top: 0;
   border-collapse: collapse;
   border-radius: 10px;
   overflow: hidden;
@@ -153,29 +162,22 @@ h2 {
 .characteristics-table td {
   padding: 10px;
   text-align: left;
-  border-bottom: 1px solid #ddd;
 }
 
 .characteristics-table th {
-  background-color: #ebecf1;
-  color: #333;
   font-weight: bold;
+  width: 200px;
 }
 
 .characteristics-table td {
   background-color: #fff;
-  color: #555;
-}
-
-.characteristics-table tr:nth-child(even) {
-  background-color: #f9f9f9;
 }
 
 /* Contact Button */
 .contact-button {
   display: inline-block;
   padding: 10px 20px;
-  background-color: #ff9900;
+  background-color: #000000;
   color: white;
   border-radius: 5px;
   text-decoration: none;
@@ -192,6 +194,90 @@ h2 {
   font-weight: bold;
 }
 
+.product-card-title{
+  font-size:2.6rem;
+  text-align:left;
+  font-weight:400;
+  margin: 0;
+}
+
+#store-name {
+  font-size: 1rem;
+    letter-spacing: .13rem;
+    color: #4d4d4d;
+    text-align: left;
+    margin: 0;
+}
+
+.product-attributes {
+  text-align: left;
+    color: #707070;
+}
+
+.product-container {
+  font-family: "roboto", Arial, Helvetica, sans-serif;
+}
+
+@media (max-width: 480px) {
+  @media (max-width: 400px) {
+    /* Reduce modal content width */
+    .modal-content {
+      max-width: 90%; /* Adjust the max width */
+      padding: 15px; /* Reduce padding */
+    }
+  
+    /* Reduce image size in the gallery */
+    .gallery-image {
+      max-height: 200px; /* Reduce max height */
+    }
+  
+    /* Adjust font sizes */
+    h2 {
+      font-size: 20px; /* Reduce font size */
+    }
+  
+    .condition {
+      font-size: 12px; /* Smaller condition font */
+    }
+  
+    .price-section {
+      font-size: 14px; /* Smaller price section text */
+    }
+  
+    .sale-price,
+    .original-price,
+    .regular-price {
+      font-size: 16px; /* Reduce price fonts */
+    }
+  
+    .product-h5 {
+      font-size: 14px; /* Smaller headings in product description */
+    }
+  
+    .product-card-title {
+      font-size: 2rem; /* Reduce card title font size */
+    }
+  
+    #store-name {
+      font-size: 0.8rem; /* Reduce store name font size */
+    }
+  
+    .product-attributes {
+      font-size: 14px; /* Smaller attribute text */
+    }
+  
+    .characteristics-table th,
+    .characteristics-table td {
+      font-size: 12px; /* Smaller table font */
+    }
+  
+    .contact-button {
+      font-size: 14px; /* Smaller button text */
+      padding: 8px 16px; /* Adjust padding */
+    }
+  }
+  
+} 
 /* Animations */
 @keyframes fadeIn {
   from {
@@ -211,4 +297,6 @@ h2 {
     transform: translateY(0);
     opacity: 1;
   }
+
+  
 }

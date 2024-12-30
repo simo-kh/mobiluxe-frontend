@@ -32,7 +32,7 @@
   font-size: 48px;
   font-weight: bold;
   margin: 0 0 40px 0;
-  color: #000000; /* Black color */
+  color: #ffffff; /* Black color */
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
 }
 
@@ -84,6 +84,13 @@
   .hero-image {
       margin-top: 20px;
   }
+
+  .main-headline {
+    font-size: 39px;
+  }
+  .button-container {
+    margin-top: 250px;
+}
 }
 
 /* Animations */

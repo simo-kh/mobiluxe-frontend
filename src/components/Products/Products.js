@@ -3,7 +3,7 @@ import ProductItem from './ProductItem';
 import ProductModal from './ProductModal';
 import './products.css';
 
-const Products = ({ products }) => {
+const   Products = ({ products }) => {
   const [sortedProducts, setSortedProducts] = useState([]);
   const [sortType, setSortType] = useState('default');
   const [selectedProduct, setSelectedProduct] = useState(null);
@@ -32,7 +32,7 @@ const Products = ({ products }) => {
 
   return (
     <div className="products-container">
-      <div className="products-header">
+      <div className="products-header-div">
         <div className="products-count">
           Affichage de {sortedProducts.length} articles
         </div>
@@ -45,7 +45,7 @@ const Products = ({ products }) => {
           </select>
         </div>
       </div>
-      <div className="products-grid">
+      <div className="products-grid-list">
         {sortedProducts.map((product) => (
           <ProductItem
             key={product.id}
@@ -58,6 +58,8 @@ const Products = ({ products }) => {
             originalPrice={product.original_price}
             onClick={() => handleProductClick(product)}
             photos={product.photos}
+            extraAttributes={product.extra_attributes} // Pass `extra_attributes` to `ProductItem`
+            condition={product.condition}
           />
         ))}
       </div>

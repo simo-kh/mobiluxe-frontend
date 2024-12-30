@@ -6,6 +6,7 @@ import Home from './pages/Home/Home';
 import Shop from './pages/Shop/Shop';
 import AboutUs from './pages/AboutUs/AboutUs';
 import ContactUs from './pages/ContactUs/ContactUs';
+import BuyPage from './pages/BuyPage'; // Import the new BuyPage component
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             <Route path="/shop" element={<Shop />} />
             <Route path="/about-us" element={<AboutUs />} />
             <Route path="/contact-us" element={<ContactUs />} />
+            <Route path="/buy" element={<BuyPage />} /> {/* New route for BuyPage */}
           </Routes>
         </main>
         <Footer />

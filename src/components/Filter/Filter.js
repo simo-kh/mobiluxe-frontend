@@ -7,7 +7,7 @@ import './Filter.css';
 const Filter = ({ categoryId, subcategoryId, onFilterChange }) => {
   const [attributes, setAttributes] = useState([]);
   const [selectedFilters, setSelectedFilters] = useState({});
-  const [priceRange, setPriceRange] = useState([0, 5000]);
+  const [priceRange, setPriceRange] = useState([0, 20000]);
 
   useEffect(() => {
     const fetchAttributes = async () => {
@@ -54,7 +54,7 @@ const Filter = ({ categoryId, subcategoryId, onFilterChange }) => {
         <Slider
           range
           min={0}
-          max={5000}
+          max={20000}
           value={priceRange}
           onChange={handlePriceChange}
         />
