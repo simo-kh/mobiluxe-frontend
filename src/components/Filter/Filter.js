@@ -8,6 +8,14 @@ const Filter = ({ categoryId, subcategoryId, onFilterChange }) => {
   const [attributes, setAttributes] = useState([]);
   const [selectedFilters, setSelectedFilters] = useState({});
   const [priceRange, setPriceRange] = useState([0, 20000]);
+  const conditionOptions = [
+    'Neuf',
+    'D\'occasion - Comme neuf',
+    'D\'occasion - Etat parfait',
+    'D\'occasion - Très bon état',
+    'D\'occasion - Bon état',
+    'D\'occasion - Etat correct',
+  ];
 
   useEffect(() => {
     const fetchAttributes = async () => {
@@ -24,13 +32,13 @@ const Filter = ({ categoryId, subcategoryId, onFilterChange }) => {
   }, [categoryId, subcategoryId]);
 
   const handleCheckboxChange = (attributeName, value) => {
-    setSelectedFilters(prevFilters => {
+    setSelectedFilters((prevFilters) => {
       const newFilters = { ...prevFilters };
       if (!newFilters[attributeName]) {
         newFilters[attributeName] = [];
       }
       if (newFilters[attributeName].includes(value)) {
-        newFilters[attributeName] = newFilters[attributeName].filter(v => v !== value);
+        newFilters[attributeName] = newFilters[attributeName].filter((v) => v !== value);
       } else {
         newFilters[attributeName].push(value);
       }
@@ -60,10 +68,10 @@ const Filter = ({ categoryId, subcategoryId, onFilterChange }) => {
         />
         <div>Prix: {priceRange[0]} - {priceRange[1]}</div>
       </div>
-      {attributes.map(attr => (
+      {attributes.map((attr) => (
         <div key={attr.id} className="attribute-filter">
           <h4>{attr.name}</h4>
-          {attr.options.map(option => (
+          {attr.options.map((option) => (
             <div key={option}>
               <input
                 type="checkbox"
@@ -78,6 +86,21 @@ const Filter = ({ categoryId, subcategoryId, onFilterChange }) => {
         </div>
       ))}
       <div className="attribute-filter">
+        <h4>Condition</h4>
+        {conditionOptions.map((condition) => (
+          <div key={condition}>
+            <input
+              type="checkbox"
+              id={`condition-${condition}`}
+              name="condition"
+              value={condition}
+              onChange={() => handleCheckboxChange('condition', condition)}
+            />
+            <label htmlFor={`condition-${condition}`}>{condition}</label>
+          </div>
+        ))}
+      </div>
+      <div className="attribute-filter">
         <h4>Promotion</h4>
         <div>
           <input
@@ -85,32 +108,9 @@ const Filter = ({ categoryId, subcategoryId, onFilterChange }) => {
             id="is_promotion"
             name="is_promotion"
             value="true"
-            onChange={() => handleCheckboxChange("is_promotion", "true")}
+            onChange={() => handleCheckboxChange('is_promotion', 'true')}
           />
           <label htmlFor="is_promotion">En Promotion</label>
-        </div>
-      </div>
-      <div className="attribute-filter">
-        <h4>Condition</h4>
-        <div>
-          <input
-            type="checkbox"
-            id="is_used"
-            name="is_used"
-            value="true"
-            onChange={() => handleCheckboxChange("is_used", "true")}
-          />
-          <label htmlFor="is_used">D'occasion</label>
-        </div>
-        <div>
-          <input
-            type="checkbox"
-            id="is_new"
-            name="is_new"
-            value="false"
-            onChange={() => handleCheckboxChange("is_used", "false")}
-          />
-          <label htmlFor="is_new">Neuf</label>
         </div>
       </div>
     </div>

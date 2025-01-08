@@ -148,8 +148,9 @@
     border-color: #ddd;
     border: 1px solid transparent;
     border-radius: 0px;
-    max-width: 150px;
+    max-width: 170px;
     height: 290px;
+    margin: 10px auto;
   }
   .card-title {
     font-size: 15px;
@@ -182,5 +183,11 @@
 
   .card-price-container {
     font-size: 15px;
+  }
+}
+
+@media (max-width: 420px) {
+  .card.card-animate {
+    max-width: 150px;
   }
 }

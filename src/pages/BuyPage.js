@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import './buyPage.css';
 
@@ -16,6 +16,11 @@ const BuyPage = () => {
 
   const [errors, setErrors] = useState({});
   const [confirmationMessage, setConfirmationMessage] = useState(null); // New state for confirmation message
+
+  useEffect(() => {
+    // Scroll to the top of the page when this component is rendered
+    window.scrollTo(0, 60);
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -46,7 +51,7 @@ const BuyPage = () => {
     };
 
     try {
-      const response = await fetch('http://localhost:5000/orders', {
+      const response = await fetch('http://192.168.100.233:5000/orders', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(orderData),

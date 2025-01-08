@@ -12,10 +12,11 @@
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.23.1",
     "react-scripts": "5.0.1",
+    "react-swipeable": "^7.0.2",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-  "start": "cross-env HOST=0.0.0.0 react-scripts start",
+    "start": "cross-env HOST=0.0.0.0 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

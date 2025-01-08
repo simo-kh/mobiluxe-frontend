@@ -1,14 +1,66 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import ReactDOM from 'react-dom';
 import { useNavigate } from 'react-router-dom';
+import { useSwipeable } from 'react-swipeable';
 import './productModal.css';
 
 function ProductModal({ product, onClose }) {
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const galleryRef = useRef(null); // Reference to the gallery container
   const navigate = useNavigate();
 
-  
-  // Render nothing if no product is selected
+  const galleryImages = product ? [product.main_photo, ...(product.photos || [])] : [];
+
+  // Handle next image
+  const handleNext = () => {
+    if (galleryImages.length > 1 && galleryRef.current) {
+      galleryRef.current.style.transition = 'transform 0.4s ease-in-out';
+      galleryRef.current.style.transform = `translateX(-${(currentIndex + 1) * 100}%)`;
+
+      setTimeout(() => {
+        let newIndex = currentIndex + 1;
+        if (newIndex >= galleryImages.length) {
+          // Reset to first image
+          galleryRef.current.style.transition = 'none';
+          galleryRef.current.style.transform = 'translateX(0)';
+          newIndex = 0;
+        }
+        setCurrentIndex(newIndex);
+      }, 400); // Match CSS transition duration
+    }
+  };
+
+  // Handle previous image
+  const handlePrev = () => {
+    if (galleryImages.length > 1 && galleryRef.current) {
+      galleryRef.current.style.transition = 'transform 0.4s ease-in-out';
+      galleryRef.current.style.transform = `translateX(-${(currentIndex - 1) * 100}%)`;
+
+      setTimeout(() => {
+        let newIndex = currentIndex - 1;
+        if (newIndex < 0) {
+          // Reset to last image
+          galleryRef.current.style.transition = 'none';
+          galleryRef.current.style.transform = `translateX(-${(galleryImages.length - 1) * 100}%)`;
+          newIndex = galleryImages.length - 1;
+        }
+        setCurrentIndex(newIndex);
+      }, 400); // Match CSS transition duration
+    }
+  };
+
+  // Swipe handlers
+  const swipeHandlers = useSwipeable({
+    onSwipedLeft: handleNext,
+    onSwipedRight: handlePrev,
+    preventScrollOnSwipe: true,
+    trackMouse: true,
+  });
+
+  const handleNavigateToBuyPage = () => {
+    navigate('/buy', { state: { product } });
+  };
+
   if (!product) return null;
 
   const {
@@ -18,66 +70,63 @@ function ProductModal({ product, onClose }) {
     extra_attributes,
     is_promotion: isOnSale,
     original_price: originalPrice,
-    main_photo,
-    photos = [],
-    condition
+    condition,
   } = product;
-
-  const galleryImages = [main_photo, ...photos];
-
-  const handleNextImage = () => {
-    setCurrentImageIndex((prevIndex) => (prevIndex + 1) % galleryImages.length);
-  };
-
-  const handlePrevImage = () => {
-    setCurrentImageIndex(
-      (prevIndex) => (prevIndex - 1 + galleryImages.length) % galleryImages.length
-    );
-  };
 
   const displayableAttributes = extra_attributes
     ? Object.entries(extra_attributes).filter(([, attr]) => attr.is_displayable)
     : [];
 
-  const handleNavigateToBuyPage = () => {
-    navigate('/buy', { state: { product } });
-  };
-
-  const modalContent = (
+  return ReactDOM.createPortal(
     <div className="modal-overlay" onClick={onClose}>
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-        <span className="close-button" onClick={onClose}>&times;</span>
-        <div className="gallery-container">
-          <button className="gallery-button left" onClick={handlePrevImage}>
-            &#9664;
-          </button>
-          <img
-            src={
-              galleryImages[currentImageIndex] ||
-              "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcQ9_LVcKEev1SQM_WkDTDqsr6Qz0JfvJhgqianTiu6gibzSe_Ccc9NrkaGMV1MSl6Mp1ex-rk-tn0pI5_--apXnvwt4TDrnfcOf297Bwd7DNY9i5qFwxJPd2A"
-            }
-            alt={name}
-            className="gallery-image"
-          />
-          <button className="gallery-button right" onClick={handleNextImage}>
-            &#9654;
-          </button>
+        <button className="close-button" onClick={onClose}>
+          &times;
+        </button>
+        <div className="gallery-container" {...swipeHandlers}>
+          {galleryImages.length > 1 && (
+            <button className="gallery-button left" onClick={handlePrev}>
+              &#9664;
+            </button>
+          )}
+          <div
+            className="gallery-wrapper"
+            ref={galleryRef}
+            style={{
+              display: 'flex',
+              transform: `translateX(-${currentIndex * 100}%)`,
+              width: `${galleryImages.length * 100}%`,
+            }}
+          >
+            {galleryImages.map((image, index) => (
+              <img
+                key={index}
+                src={image}
+                alt={`Image ${index + 1}`}
+                className="gallery-image"
+                aria-hidden={index !== currentIndex} // Accessibility for screen readers
+              />
+            ))}
+          </div>
+          {galleryImages.length > 1 && (
+            <button className="gallery-button right" onClick={handleNext}>
+              &#9654;
+            </button>
+          )}
         </div>
         <div className="product-container">
           <h2 id="store-name">Mobiluxe</h2>
           <h2 className="product-card-title">{name}</h2>
           <div className="product-attributes">
-          {/* Render displayable attributes */}
-          {displayableAttributes.map(([key, attr], index) => (
-            <React.Fragment key={key}>
-              {index > 0 && ' • '}
-              <span>{attr.value}</span>
-            </React.Fragment>
-          ))}
-          {/* Append condition if it exists */}
-          {condition && (displayableAttributes.length > 0 ? ' • ' : '')}
-          {condition && <span>{condition}</span>}
-        </div>
+            {displayableAttributes.map(([key, attr], index) => (
+              <React.Fragment key={key}>
+                {index > 0 && ' • '}
+                <span>{attr.value}</span>
+              </React.Fragment>
+            ))}
+            {condition && (displayableAttributes.length > 0 ? ' • ' : '')}
+            {condition && <span>{condition}</span>}
+          </div>
           <div className="price-section">
             {isOnSale && originalPrice ? (
               <>
@@ -97,7 +146,6 @@ function ProductModal({ product, onClose }) {
             <p>{description}</p>
           </div>
         )}
-
         <div>
           <h5 className="product-h5">Plus d'informations:</h5>
           <table className="characteristics-table">
@@ -118,10 +166,9 @@ function ProductModal({ product, onClose }) {
           </a>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
-
-  return ReactDOM.createPortal(modalContent, document.body);
 }
 
 export default ProductModal;

@@ -54,10 +54,10 @@ function ProductItem({ image, name, price, extraAttributes, onClick, isOnSale, i
           {condition && <span>{condition}</span>}
         </div>
         <div className="card-price-container">
-          <p className="card-price">{price} MAD</p>
+          <p className="card-price">{price} DH</p>
           {isOnSale && originalPrice && (
             <p className="card-original-price">
-              <del>{originalPrice} MAD</del>
+              <del>{originalPrice} DH</del>
             </p>
           )}
         </div>

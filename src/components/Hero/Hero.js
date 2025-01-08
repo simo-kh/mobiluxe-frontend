@@ -2,36 +2,39 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './hero.css';
 
-const images = [
-  // "images/walpaper.jpg",
-  // "images/walpaper2.jpg",
-  // "images/walpaper3.jpg",
-  "images/simo_mobiluxe.jpg"
-
-  //"https://amanto-store-demo.myshopify.com/cdn/shop/files/section-slideshow-v2-img3.jpg?v=1614297689"
-];
-
+// Separate images for web and mobile
+const webImage =  "images/simo_mobiluxe4.jpg";
+const mobileImage =  "images/simo_mobiluxe.jpg";
 
 const Hero = () => {
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
   const navigate = useNavigate();
 
+  // Detect screen size and update `isMobile`
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 5000);
+    const updateScreenSize = () => {
+      setIsMobile(window.matchMedia("(max-width: 768px)").matches);
+    };
 
-    return () => clearInterval(interval);
+    // Initialize screen size
+    updateScreenSize();
+
+    // Add event listener for screen resizing
+    // Cleanup event listener
+    return () => window.removeEventListener("resize", updateScreenSize);
   }, []);
 
   const handleShopNowClick = () => {
     navigate('/shop');
   };
 
+  // Choose the image based on screen size
+  const backgroundImage = isMobile ? mobileImage : webImage;
+
   return (
     <div 
       className="section-container" 
-      style={{ backgroundImage: `url(${images[currentImageIndex]})` }}
+      style={{ backgroundImage: `url(${backgroundImage})` }}
     >
       <div className="text-block">
         <p className="subtitle">Bienvenue chez Mobiluxe</p>

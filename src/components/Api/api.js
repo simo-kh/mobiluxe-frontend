@@ -4,7 +4,7 @@ const getApiUrl = () => {
   if (window.location.hostname === 'localhost') {
     return 'http://localhost:5000';
   } else {
-    return `http://192.168.52.200:5000`;
+    return `http://192.168.100.233:5000`;
   }
 };
 

@@ -6,7 +6,8 @@ const Footer = () => {
     <footer className="footer">
       <div className="footer-column">
         <div className="footer-logo">
-          <img src="images/logo.png" alt="Mobiluxe Logo" className="logo-image" />
+          
+          <img src="images/mobiluxe_store2.png" alt="Mobiluxe Logo" className="logo-image" />
           <p>© 2024 Mobiluxe. Tous droits réservés</p>
         </div>
       </div>
@@ -18,9 +19,12 @@ const Footer = () => {
       </div>
       <div className="footer-column">
         <h3>Suivez-nous</h3>
-        <p><a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer"><i className="fab fa-facebook"></i></a></p>
-        <p><a href="https://www.instagram.com/mobiluxe_store/" target="_blank" rel="noopener noreferrer"><i className="fab fa-instagram"></i></a></p>
-        <p><a href="https://www.tiktok.com/@mobiluxe_store" target="_blank" rel="noopener noreferrer"><i className="fab fa-tiktok"></i></a></p>
+        <div className='social-media'>
+          <p><a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer"><i className="fab fa-facebook"></i></a></p>
+          <p><a href="https://www.instagram.com/mobiluxe_store/" target="_blank" rel="noopener noreferrer"><i className="fab fa-instagram"></i></a></p>
+          <p><a href="https://www.tiktok.com/@mobiluxe_store" target="_blank" rel="noopener noreferrer"><i className="fab fa-tiktok"></i></a></p>
+        </div>
+        
       </div>
     </footer>
   );

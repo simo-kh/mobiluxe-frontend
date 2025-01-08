@@ -42,7 +42,7 @@
 }
 
 .footer-column i {
-  color: #b79163; /* Dark yellow icons */
+  color: #f8b133; /* Dark yellow icons */
   margin-right: 8px;
   transition: transform 0.3s ease, color 0.3s ease;
   font-size: 25px;
@@ -50,11 +50,11 @@
 
 .footer-column a:hover i {
   transform: scale(1.2);
-  color: #b79163; /* Dark yellow on hover */
+  color: #f8b133; /* Dark yellow on hover */
 }
 
 .footer-column .footer-logo p {
-  color: #b79163; /* Black color for the copyright text */
+  color: #f8b133; /* Black color for the copyright text */
   font-weight: bold;
 }
 
@@ -66,5 +66,11 @@
 
   .footer-column {
     padding: 10px 0;
+
+  }
+
+  .social-media {
+    display: flex;
+    justify-content: center;
   }
 }

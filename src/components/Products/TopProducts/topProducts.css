@@ -141,6 +141,12 @@
   }
 }
 
+@media (max-width: 420px) {
+  .product-cards {
+    gap: 0;
+  }
+}
+
 @media (max-width: 480px) {
   .top-products-section {
     padding: 20px;

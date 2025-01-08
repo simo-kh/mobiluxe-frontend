@@ -21,6 +21,8 @@
   text-align: center;
   max-width: 600px;
   width: 90%;
+  max-height: 90%; /* Limit the height */
+  overflow-y: auto; /* Enable vertical scrolling */
   animation: slideInUp 0.5s ease-in-out;
   position: relative;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
@@ -34,13 +36,16 @@
   font-size: 1.5rem;
   cursor: pointer;
   color: #ff4757;
+  border: 0;
+  background: 0;
+  z-index: 1;
 }
 
 /* Gallery Container */
 .gallery-container {
   position: relative;
   border-radius: 15px;
-  padding: 10px;
+  padding: 10px 0;
   margin-bottom: 20px;
 }
 
@@ -218,8 +223,58 @@ h2 {
   font-family: "roboto", Arial, Helvetica, sans-serif;
 }
 
+
+/* Gallery Container */
+.gallery-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+}
+
+.gallery-wrapper {
+  display: flex;
+  transition: transform 0.4s ease-in-out;
+}
+
+.gallery-image {
+  flex: 0 0 auto; /* Prevent image from shrinking or growing */
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  object-fit: contain;
+  border-radius: 15px;
+}
+
+.gallery-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.gallery-button.left {
+  left: 10px;
+}
+
+.gallery-button.right {
+  right: 10px;
+}
+
+
+
+
 @media (max-width: 480px) {
-  @media (max-width: 400px) {
+    
+
     /* Reduce modal content width */
     .modal-content {
       max-width: 90%; /* Adjust the max width */
@@ -230,6 +285,7 @@ h2 {
     .gallery-image {
       max-height: 200px; /* Reduce max height */
     }
+
   
     /* Adjust font sizes */
     h2 {
@@ -275,7 +331,7 @@ h2 {
       font-size: 14px; /* Smaller button text */
       padding: 8px 16px; /* Adjust padding */
     }
-  }
+  
   
 } 
 /* Animations */

@@ -7,7 +7,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
+  padding: 5px 20px;
   background-color: #f2f2f2;
   border-top: 1px solid #333333;
   position: relative;
@@ -21,7 +21,7 @@ body {
 }
 
 .logo img {
-  width: 70px;
+  width: 100px;
   border-radius: 10em;
 }
 
@@ -81,6 +81,15 @@ body {
 
 /* Responsive Styles */
 @media (max-width: 768px) {
+  .logo img {
+    width: 80px;
+    border-radius: 10em;
+  }
+
+  .header-container {
+    padding: 5px px;
+  }
+  
   .navigation-menu {
     display: none;
     position: absolute;
@@ -112,7 +121,6 @@ body {
 
   .navigation-menu a {
     padding: 15px 20px;
-    width: 100%;
     display: block;
   }
 
